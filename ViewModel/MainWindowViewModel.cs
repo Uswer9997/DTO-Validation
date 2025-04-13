@@ -1,39 +1,21 @@
-﻿using System;
+﻿using BaseClasses;
+using Model;
 using System.Collections.ObjectModel;
 
 namespace DTO_Validation.ViewModel
 {
-  internal class MainWindowViewModel : BaseViewModel
-  {
-
-    public ObservableCollection<Model.Person> People { get; }
-
-    public MainWindowViewModel()
+    internal class MainWindowViewModel : BaseInpc
     {
-      People = new ObservableCollection<Model.Person>();
+        private readonly ModelOfApp model;
 
-      AddPersonCommand = new RelayCommand(OnAddPersonCommandExecute, OnCanAddPersonCommandExecute);
+        public  ReadOnlyObservableCollection<Person> People { get; }
+
+        public MainWindowViewModel()
+        {
+            model = new ModelOfApp();
+            People = model.GetPeople();
+        }
+
+        public PersonViewModel CreatePersonVM() => new PersonViewModel(model);
     }
-
-    public RelayCommand AddPersonCommand { get; }
-
-    private void OnAddPersonCommandExecute(object obj)
-    {
-      var vm = new PersonViewModel();
-
-      var _personWindow = new AddPersonWindow()
-      {
-        DataContext = vm
-      };
-      vm.SaveChanges = new Action<PersonViewModel>(SepPersonChanges);
-      _personWindow.Show();
-    }
-
-    private bool OnCanAddPersonCommandExecute(object arg) => true;
-
-    private void SepPersonChanges(PersonViewModel pvm)
-    {
-      People.Add(pvm._model);
-    }
-  }
 }

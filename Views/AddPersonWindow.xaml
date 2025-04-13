@@ -96,7 +96,7 @@
                         <MultiBinding Converter="{StaticResource BooleanOrConverter}">
                             <Binding ElementName="adorner" Path="AdornedElement.IsKeyboardFocused" />
                             <Binding ElementName="toolTipCorner" Path="IsMouseOver" />
-                            <Binding ElementName="adorner" Path="AdornerElement.(DatePicker.IsKeyboardFocusWithin)"/>
+                            <Binding ElementName="adorner" Path="AdornedElement.IsKeyboardFocusWithin"/>
                         </MultiBinding>
                     </DataTrigger.Binding>
                     <DataTrigger.EnterActions>

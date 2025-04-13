@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DTO_Validation"
+        xmlns:local="clr-namespace:DTO_Validation.Views"
         xmlns:vm="clr-namespace:DTO_Validation.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -12,7 +12,7 @@
     </Window.DataContext>
     <DockPanel LastChildFill="True">
         <Button Content="Add" 
-                Command="{Binding AddPersonCommand}"
+                Command="{x:Static local:CommandHelper.AddPersonWindow}"
                 DockPanel.Dock="Top"
                 HorizontalAlignment="Center"/>
         <DataGrid ItemsSource="{Binding People}">

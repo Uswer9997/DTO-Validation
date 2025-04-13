@@ -145,15 +145,26 @@
                 Grid.IsSharedSizeScope="True"
                 Orientation="Vertical">
         <HeaderedContentControl Header="Name">
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" Validation.ErrorTemplate="{StaticResource errorTemplateSilverlightStyle}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                     Validation.ErrorTemplate="{StaticResource errorTemplateSilverlightStyle}"/>
         </HeaderedContentControl>
 
         <HeaderedContentControl Header="DOB">
-            <DatePicker SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}" Validation.ErrorTemplate="{StaticResource errorTemplateSilverlightStyle}" />
+            <DatePicker SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
+                        Validation.ErrorTemplate="{StaticResource errorTemplateSilverlightStyle}" />
         </HeaderedContentControl>
 
-        <Button HorizontalAlignment="Center"
+        <Grid>
+            <Button x:Name="btn" HorizontalAlignment="Center"
                 Command="{Binding SaveCommand}"
-                Content="Save" />
-        </StackPanel>
+                Content="Save"/>
+
+            <Border Background="Transparent" IsHitTestVisible="{Binding Path=(Validation.HasError), ElementName=btn}">
+                <Border.ToolTip>
+                    <ItemsControl ItemsSource="{Binding Path=(Validation.Errors), Source={x:Reference btn}}"
+                              DisplayMemberPath="ErrorContent"/>
+                </Border.ToolTip>
+            </Border>
+        </Grid>
+    </StackPanel>
 </Window>

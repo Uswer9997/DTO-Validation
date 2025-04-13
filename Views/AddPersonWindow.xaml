@@ -135,9 +135,9 @@
         </ControlTemplate>
     </Window.Resources>
 
-    <Window.DataContext>
+    <d:Window.DataContext>
         <vm:PersonViewModel />
-    </Window.DataContext>
+    </d:Window.DataContext>
 
     <StackPanel Width="400"
                 HorizontalAlignment="Center"

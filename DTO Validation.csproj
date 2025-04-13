@@ -61,7 +61,6 @@
     <Compile Include="ViewModels\ValidationRes.cs" />
     <Compile Include="Views\Converters\BooleanOrConverter.cs" />
     <Compile Include="Models\PersonDTO.cs" />
-    <Compile Include="ObservableObject.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

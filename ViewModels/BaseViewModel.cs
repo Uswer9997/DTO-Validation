@@ -26,17 +26,6 @@ namespace DTO_Validation.ViewModels
         yield return error;
     }
 
-    //public bool HasValidationErrors([CallerMemberName] string propertyName = "")
-    //{
-    //  if (propertyName == null)
-    //    propertyName = string.Empty;
-
-    //  if (_errors == null || !_errors.TryGetValue(propertyName, out var propertyErrors))
-    //    return false;
-
-    //  return propertyErrors.Count > 0;
-    //}
-
     protected void AddValidationError(string error, [CallerMemberName] string propertyName = "")
     {
       if (propertyName == null)
@@ -75,7 +64,6 @@ namespace DTO_Validation.ViewModels
 
     private void RaiseValidationErrorsChanged(string propertyName)
     {
-      //RaisePropertyChanged(nameof(HasErrors));
       RaiseErrorsChanged(new DataErrorsChangedEventArgs(propertyName));
     }
 

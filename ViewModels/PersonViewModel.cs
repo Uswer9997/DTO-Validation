@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using DTO_Validation.Model;
 
 namespace DTO_Validation.ViewModels
@@ -17,7 +14,7 @@ namespace DTO_Validation.ViewModels
       Person = new PersonDTO()
       {
         Name = "",
-        DateOfBirth = new DateTime(1975, 10, 23)
+        Birthday = new DateTime(1975, 10, 23)
       };
       SaveCommand = new RelayCommand(obj => Save(), obj => true);
 
@@ -38,10 +35,10 @@ namespace DTO_Validation.ViewModels
 
     public DateTime DateOfBirth
     {
-      get => Person.DateOfBirth;
+      get => Person.Birthday;
       set
       {
-        Person.DateOfBirth = value;
+        Person.Birthday = value;
         Validate(value);
       }
     }
@@ -58,16 +55,10 @@ namespace DTO_Validation.ViewModels
         SaveChanges(Person);
       }
     }
-
-    protected override void RaiseErrorsChanged(DataErrorsChangedEventArgs e)
-    {
-      SaveCommand.RaiseCanExecuteChanged();
-      base.RaiseErrorsChanged(e);
-    }
        
-    private ValidationRes ValidateDateOfBirth(object arg)
+    private ValidationRes ValidateDateOfBirth(object value)
     {
-      if (!ValidateAge((DateTime)arg))
+      if (!ValidateAge((DateTime)value))
       {
         return new ValidationRes(false, "Must be 18 or older", "DateOfBirth");
       }
@@ -98,7 +89,7 @@ namespace DTO_Validation.ViewModels
 
     private bool IsValid(PersonDTO validatingPerson)
     {
-      if (!Validate(validatingPerson.Name, "Name") | !Validate(validatingPerson.DateOfBirth, "DateOfBirth"))
+      if (!Validate(validatingPerson.Name, "Name") | !Validate(validatingPerson.Birthday, "DateOfBirth"))
         return false;
 
       return true;

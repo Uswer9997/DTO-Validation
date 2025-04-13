@@ -31,6 +31,7 @@ namespace DTO_Validation.ViewModel
             {
                 Set(ref _name, value ?? string.Empty);
                 RaiseErrorsChanged();
+                RaiseErrorsChanged(nameof(SaveCommand));
             }
         }
 
@@ -42,6 +43,7 @@ namespace DTO_Validation.ViewModel
             {
                 Set(ref _dateOfBirth, value);
                 RaiseErrorsChanged();
+                RaiseErrorsChanged(nameof(SaveCommand));
             }
         }
 
@@ -85,7 +87,7 @@ namespace DTO_Validation.ViewModel
 
         public IEnumerable GetErrors(string propertyName)
         {
-            if (string.IsNullOrEmpty(propertyName))
+            if (string.IsNullOrEmpty(propertyName) || propertyName is nameof(SaveCommand))
             {
                 foreach (var err in GetErrors(nameof(Name)))
                 {

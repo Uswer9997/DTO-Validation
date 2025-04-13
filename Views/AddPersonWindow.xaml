@@ -159,7 +159,7 @@
                 Command="{Binding SaveCommand}"
                 Content="Save"/>
 
-            <Border Background="Transparent" IsHitTestVisible="{Binding Path=(Validation.HasError), ElementName=btn}">
+            <Border Background="Transparent" IsHitTestVisible="{Binding Path=HasErrors}">
                 <Border.ToolTip>
                     <ItemsControl ItemsSource="{Binding Path=(Validation.Errors), Source={x:Reference btn}}"
                               DisplayMemberPath="ErrorContent"/>

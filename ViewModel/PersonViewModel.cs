@@ -30,7 +30,6 @@ namespace DTO_Validation.ViewModel
             set
             {
                 Set(ref _name, value ?? string.Empty);
-                RaiseErrorsChanged();
                 RaiseErrorsChanged(nameof(SaveCommand));
             }
         }
@@ -42,7 +41,6 @@ namespace DTO_Validation.ViewModel
             set
             {
                 Set(ref _dateOfBirth, value);
-                RaiseErrorsChanged();
                 RaiseErrorsChanged(nameof(SaveCommand));
             }
         }

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace DTO_Validation.ViewModels
 {
-  internal class MainWindowViewModel : BaseViewModel
+  internal class MainWindowViewModel
   {
 
     public ObservableCollection<Model.PersonDTO> People { get; }

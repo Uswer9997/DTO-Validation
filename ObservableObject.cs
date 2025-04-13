@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DTO_Validation
 {
-    public abstract class ObservableObject : INotifyPropertyChanged, INotifyPropertyChanging
+  public abstract class ObservableObject : INotifyPropertyChanged, INotifyPropertyChanging
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event PropertyChangingEventHandler PropertyChanging;

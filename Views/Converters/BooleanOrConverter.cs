@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace DTO_Validation.Converters
+namespace DTO_Validation.Views.Converters
 {
-    public class BooleanOrConverter : IMultiValueConverter
+  public class BooleanOrConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

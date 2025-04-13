@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace DTO_Validation.ViewModel
+namespace DTO_Validation.ViewModels
 {
   internal class MainWindowViewModel : BaseViewModel
   {
 
-    public ObservableCollection<Model.Person> People { get; }
+    public ObservableCollection<Model.PersonDTO> People { get; }
 
     public MainWindowViewModel()
     {
-      People = new ObservableCollection<Model.Person>();
+      People = new ObservableCollection<Model.PersonDTO>();
 
       AddPersonCommand = new RelayCommand(OnAddPersonCommandExecute, OnCanAddPersonCommandExecute);
     }
@@ -25,15 +25,15 @@ namespace DTO_Validation.ViewModel
       {
         DataContext = vm
       };
-      vm.SaveChanges = new Action<PersonViewModel>(SepPersonChanges);
+      vm.SaveChanges = new Action<Model.PersonDTO>(SetPersonChanges);
       _personWindow.Show();
     }
 
     private bool OnCanAddPersonCommandExecute(object arg) => true;
 
-    private void SepPersonChanges(PersonViewModel pvm)
+    private void SetPersonChanges(Model.PersonDTO pm)
     {
-      People.Add(pvm._model);
+      People.Add(pm);
     }
   }
 }

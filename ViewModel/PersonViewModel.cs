@@ -81,7 +81,10 @@ namespace DTO_Validation.ViewModel
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
         protected void RaiseErrorsChanged([CallerMemberName] string propertyName = null)
-            => ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            RaisePropertyChanged(nameof(HasErrors));
+        }
 
         public IEnumerable GetErrors(string propertyName)
         {
